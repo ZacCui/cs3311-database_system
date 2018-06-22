@@ -1,0 +1,103 @@
+# COMP3311 12s1 Exam Q9
+
+(a)
+create function fixCoursesOnAddCourseEnrolment() returns trigger
+as
+$$
+declare
+	_nS int;
+	_nE int;
+	_avgEval float;
+	_total float;
+	
+begin
+	select c.nS, c.nE, c.avgEval into _nS,_nE,_avgEval
+	from Courses c
+	where c.id = new.course;
+	_nS := _nS + 1;
+	_total := avgEval * nE;
+	if new.stueval != null then
+		_nE := _nE + 1;
+		_total := total + new.stueval;
+		_avgEval := _total / _nE;		
+	end if;
+	update Courses 
+	set ns = _nS, ne = _nE, avgeval = _avgeval 
+	where new.course = id
+	return new;
+	
+end;
+$$ language plpgsql
+(b)
+
+create function DropCourseEnrolmentTrigger() returns trigger
+as
+$$
+declare
+	_nS integer;
+	_nE integer;
+	avg float;
+	total float;
+begin
+	select nS,nE,avgEval into _nS, _nE, avg
+	from Course
+	where old.course = id;
+	_nS := _nS -1;
+	if old.stueval is null then
+		_nE := _nE - 1;
+		if (_nS > 10 && (3*nE) > nS) then
+			select sum(stueval) into total
+			from courseEnrolments
+			where new.course = course
+			total := total - old.stueval;
+			avg := total::float / nE;
+		else
+			avg = null;
+		end if;
+	end if; 
+	update Course
+	set nE = _nE, nS = _nS, stueval = avg
+	where id = old.course;
+	return new;
+	
+	
+end;
+$$
+language plpgsql
+
+(c)
+create function fixCoursesOnModCourseEnrolment() returns trigger
+as
+declare
+	_nS integer;
+	_nE integer;
+	avg float;
+	total float;
+begin
+	select nS,nE,avgEval into _nS, _nE, avg
+	from Course
+	where id = old.course
+	if old.stueval != new.stueval then
+		if (_nS > 10 && (3*nE) > nS) then
+			select sum(stueval) into total
+			from courseEnrolments
+			where old.course = course
+			total := total - old.stueval + new.stueval;
+			avg := total::float / nE;
+		else
+			avg = null
+		end if;	
+	end if;
+	update Course
+	set evalavg = avg
+	where id = old.course;
+	return new;
+end;
+
+$$
+$$ language plpgsql
+
+
+
+
+

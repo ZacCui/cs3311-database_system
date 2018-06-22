@@ -1,0 +1,33 @@
+# COMP3311 12s1 Exam Q11
+
+(a)
+fds : {A->BC,DE->F, ADE->G}
+
+(b)
+key = ADE
+res = {ABCDEFG}
+fds : {A->BC,DE->F, ADE->G}
+
+step 1:
+fix A->BC
+key: A
+res = {ABC,ADEFG}
+fds = {DE->F, ADE->G}
+
+step 2:
+fix DE->F
+key DE
+res = {ABC,ADEG,DEF}
+fds = {ADE->G}
+
+final : {ABC,ADEG,DEF}
+
+(c)
+
+ABC
+Student id can get students name and degree
+ADEG
+student id and the course the students enrolled in and which task the student have done, cam get the mark of the task
+DEF
+In a degree we can konw which task students need to do in a course.
+

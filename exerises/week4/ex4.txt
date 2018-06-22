@@ -1,0 +1,53 @@
+1a.
+	select sname
+	from suppliers, parts, catalog
+	where parts.color = 'red'
+	and suppliers.sid = catalog.sid
+	and parts.pid = catalog.pid
+
+1b. 
+	select C.sid
+	from   Parts P, Catalog C
+	where  (P.colour='red' or P.colour='green') and C.pid=P.pid
+
+1c.
+	select S.sid
+	from   Suppliers S
+	where  S.address='221 Packer Street'
+    or S.sid in (select C.sid
+                   from   Parts P, Catalog C
+                   where  P.color='red' and P.pid=C.pid
+                   )
+1d.
+	(select C.sid
+ 	from Parts P, Catalog C
+ 	where P.color='red' and P.pid=C.pid
+	)
+	intersect
+	(select C.sid
+ 	from Parts P, Catalog C
+ 	where P.color='green' and P.pid=C.pid
+	)
+
+	select C.sid
+	from   Parts P, Catalog C
+	where  P.color='red' and P.pid=C.pid
+       and exists (select P2.pid
+                   from   Parts P2, Catalog C2
+                   where  P2.color='green' and C2.sid=C.sid and P2.pid=C2.pid
+                  )
+1e.
+	select C.sid
+	from Parts P, Catalog C
+	where P.pname in 
+	(select pname from Parts)
+
+1f.
+	select S.sid
+	from   Suppliers S
+	where  not exists((select P.pid from Parts P)
+                  except
+                  (select C.pid from Catalog C where C.sid=S.sid)
+                 )
+
+1g

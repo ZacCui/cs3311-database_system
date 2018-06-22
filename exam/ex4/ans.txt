@@ -1,0 +1,87 @@
+drop view if exists q1;
+create view q1 as 
+	select count(*) as nacc
+	from Accesses 
+	where acctime 
+	like '%03-02%';
+
+drop view if exists q2;
+create view q2 as
+select * 
+from Accesses 
+where 
+params like '%state=search%'
+and 
+page like 'messageboard%';
+
+drop view if exists q3;
+create view q3 as
+select distinct h.hostname
+from Hosts h
+join sessions s on (h.id = s.host) 
+where hostname like 'tuba%'
+and s.complete = 'f'
+order by h.hostname;
+
+drop view if exists q4;
+create view q4 as
+select min(nbytes),cast(avg(nbytes)as int),max(nbytes) 
+from Accesses;
+
+drop view if exists q5;
+create view q5 as
+select count(*)
+from Hosts h 
+join Sessions s on (s.host = h.id)
+where h.hostname not like '%cse.unsw.edu.au';
+
+
+drop view if exists sessLength;
+create view sessLength as
+select session,count(*) as length
+from   Accesses
+group by session;
+
+drop view if exists q7;
+create view q7 as
+select session, length
+from sesslength 
+where length = (select max(length) from sesslength);
+
+drop view if exists q8;
+create view q8 as
+select page, count(*) as times
+from Accesses
+group by page;
+
+drop view if exists ModuleAccess;
+
+drop view if exists q9;
+create view ModuleAccess as
+select session, seq, page as module
+from   Accesses;
+
+create view Q9 as
+select module, count(*) as freq
+from   ModuleAccess
+group by module
+order by count(*) desc
+;
+
+drop view if exists q10;
+create view q10 as
+select s.id
+from sessions s
+where s.id not in
+(select session from accesses);
+
+drop view if exists q11;
+create view q11 as
+select distinct h.hostname
+from hosts h
+where h.hostname is not null
+and h.id not in 
+(select s.host
+from sessions s);
+
+

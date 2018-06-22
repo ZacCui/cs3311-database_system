@@ -1,0 +1,46 @@
+# COMP3311 12s1 Exam Q8
+
+(a)
+create table Employees(
+	id integer,
+	name text not null,
+	position text not null
+	primary key(id)
+);
+
+create table PartTimes(
+	employee integer references Employees(id)
+	fraction float not null,
+	primary key(employee)
+);
+
+create table Casuals(
+	employee integer references Employees(id)
+	primary key(employee)
+	
+);
+
+
+create table worked(
+	casual integer references Casuals(employee)
+	onDate date,
+	start timestamp not null, 
+	end	timestamp not null,
+	primary key(ondate)
+	constraint timing check (start < end)
+);
+
+(b)
+create table Employees(
+	id integer primary key,
+	name text not null,
+	position text not null
+	type enum('partime','casual'),
+	fraction float,
+	workDate date,
+	start time,
+	end time
+);
+
+
+

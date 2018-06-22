@@ -1,0 +1,53 @@
+2.
+Update Employees
+set salary = salary * 0.8
+where age < 25
+;
+3.
+Update Employees e
+set e.salary = e.salary *1.1
+where e.id in (select eid from Department d, WorksIn w
+		where d.dname = 'Sales' and d.did = w.did);
+4.
+	salary real
+	constraint Validsalary check (salary >= 15000),
+6.
+	constraint ValidSumOfTime check
+	( 1.00 >= (select sum(pct_time) from
+		  WorksIn w where w.eid = eid) 
+	);
+7.
+	constraint ValidManaget check
+	( 1 = ( select pct_time from Works w 
+		where w.eid = manager)
+	);
+8.
+	foreign key (eid) references Employees(eid) on delete cascade,
+9.
+	update department set manager = SomeEID where did = OurDeptID;
+10.
+	foreign key (did) references Departments(did) on delete set null
+11.
+	create table R (
+        x       integer,
+        y       char(1),
+    primary key (x)
+);
+create table S (
+        y       char(1),
+        x       integer,
+    primary key (y)
+);
+alter table S add foreign key (x) references R(x);
+alter table R add foreign key (y) references S(y);
+
+12.
+insert into R values (1,null);
+insert into S values ('a',null);
+update R set y = 'a' where x = 1;
+update S set x = 1 where y = 'a';
+
+14.
+alter table R add foreign key (y) references S(y) deferrable;
+alter table S add foreign key (x) references R(x) deferrable;
+

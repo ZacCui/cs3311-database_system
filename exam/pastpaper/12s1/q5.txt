@@ -1,0 +1,28 @@
+create table Employees(
+	id interger,
+	name text not null,
+	position text not null,
+	primary key(id)
+);
+
+create table partTime(
+	employee integer,
+	fraction float check (fraction >= 0.0 and <= 1.0)
+	foreign key(employee) references Employees(id)
+);
+
+create table Casuals(
+	employee integer,
+	foreign key(employee) references Employees(id)
+);
+
+create table workedHours(
+	eid integer
+	onDate date,
+	starting time,
+	ending time,
+	primary key(eid,onDate)
+	foreign key(eid) references Employees(id)
+	constraint timing check (starting < ending)
+);
+

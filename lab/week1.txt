@@ -1,0 +1,123 @@
+How many movies are in the database?
+65
+What are the titles of all movies in the database?
+============================
+The Abyss
+Aliens
+Avatar
+Ghosts of the Abyss
+Terminator 2: Judgment Day
+The Terminator
+Titanic
+True Lies
+Xenogenesis
+Antichrist
+Dancer in the Dark
+Dogville
+Epidemic
+Europa
+Medea
+Boksuneun naui geot
+Chinjeolhan geumjassi
+Gongdong gyeongbi guyeok JSA
+Moon Is the Sun's Dream
+Oldboy
+Saibogujiman kwenchana
+Saminjo
+Simpan
+Thirst
+1941
+Amistad
+Artificial Intelligence: AI
+Catch Me If You Can
+Close Encounters of the Third Kind
+The Color Purple
+E.T.: The Extra-Terrestrial
+Empire of the Sun
+Hook
+Indiana Jones and the Kingdom of the Crystal Skull
+Indiana Jones and the Last Crusade
+Indiana Jones and the Temple of Doom
+Jaws
+Jurassic Park
+The Lost World: Jurassic Park
+Minority Report
+Raiders of the Lost Ark
+Saving Private Ryan
+Schindler's List
+The Terminal
+Blue Velvet
+Dune
+The Elephant Man
+Eraserhead
+Inland Empire
+Lost Highway
+Mulholland Dr.
+Rabbits
+Twin Peaks: Fire Walk with Me
+Wild at Heart
+Barton Fink
+The Big Lebowski
+Blood Simple.
+Burn After Reading
+Fargo
+The Hudsucker Proxy
+Intolerable Cruelty
+The Ladykillers
+No Country for Old Men
+O Brother, Where Art Thou?
+Raising Arizona
+============================
+What is the earliest year that film was made (in this database)? (Hint: there is a min() summary function)
+1975
+How many actors are there (in this database)?
+2999
+Are there any actors whose family name is Zeta-Jones? (case-sensitive)
+Zeta-Jones Catherine
+What genres are there?
+====
+Comedy
+War
+Action
+Adventure
+Sci-Fi
+Thriller
+Drama
+Horror
+History
+Mystery
+Crime
+Biography
+Musical
+Fantasy
+Family
+Documentary
+Short
+Romance
+====
+What movies did Spielberg direct? (title+year)
+1941 1979
+Amistad 1997
+Artificial Intelligence: AI 2001
+Catch Me If You Can 2002
+Close Encounters of the Third Kind 1977
+The Color Purple 1985
+E.T.: The Extra-Terrestrial 1982
+Empire of the Sun 1987
+Hook 1991
+Indiana Jones and the Kingdom of the Crystal Skull 2008
+Indiana Jones and the Last Crusade 1989
+Indiana Jones and the Temple of Doom 1984
+Jaws 1975
+Jurassic Park 1993
+The Lost World: Jurassic Park 1997
+Minority Report 2002
+Raiders of the Lost Ark 1981
+Saving Private Ryan 1998
+Schindler's List 1993
+The Terminal 2004
+Which actor has acted in all movies (in this database)?
+No actor acted in all movies
+Are there any directors in the database who don't direct any movies?
+No
+

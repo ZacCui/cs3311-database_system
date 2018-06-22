@@ -1,0 +1,20 @@
+7
+
+create table CompanyListing{
+	givenname varchar(50),
+	faminlyname varchar(50),
+	newWorth float
+		 constraint ValidnetWorth
+		 check (netWorth >= 0)
+	sharePrice float
+		   constraint Validprice
+		 check (sharePrice >= 0)	
+};
+
+solution:
+CREATE TABLE CompanyListing
+(
+    name         char(4) PRIMARY KEY,
+    sharePrice   numeric(6,2),
+    netWorth     numeric(20,2)
+);

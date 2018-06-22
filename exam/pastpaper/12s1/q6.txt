@@ -1,0 +1,14 @@
+a
+X: T1 reads X, T2 writes X T3 reads X from T2, T3 writes X  -> no cycle in X
+
+Y: T1 writes Y, T2 reads from T1, T3 reads from T1, T3 writes Y -> no cycle in Y
+
+it's conflict-serializable
+
+b
+
+see a it's view-serializable
+any schedule that's conflict-serializable is also view-serializable. 
+
+c
+

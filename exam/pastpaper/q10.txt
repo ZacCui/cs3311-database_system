@@ -1,0 +1,27 @@
+# COMP3311 12s1 Exam Q10
+
+(a)
+
+select name and id for all players
+select the goal information for a certain play
+
+(b)
+1 + 500  = 501
+
+
+(c)
+<?
+require(".../db.php");
+$db = dbConnect("dbname=exam");
+
+$players = "select p.id, p.name, coalesce(count(*).0) 
+						from Players p
+						left outer join goals g on (p.id = g.scoredby)
+						group by p.id";
+
+$r = dbQuery($db, mkSQL($players))
+while ($t = dbNext($r)) {
+	list($id,$name,$ng) = $t;
+	printf("%s %d\n", $name, $ng);
+}
+?>

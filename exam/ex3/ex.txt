@@ -1,0 +1,56 @@
+One
+2.
+Update employees
+set salary = salary * 0.8
+where age < 25
+3.
+Update employees e
+set e.salary = e.salary *1.1
+where e.id in
+(select eid 
+from department d, worksin w
+where d.dname = 'Sales' and d.id = w.did
+);
+4.
+manager   integer not null,
+5.
+salary float check (salary >= 15000.0)
+6.
+      pct_time  real check ((select sum(pct_time)
+      											from worksin
+      											where eid = w.eid) <= 1.0),
+7.
+
+constraint FullTimeManager
+check (
+	(select sum(pct_time)
+	from employees e
+	join worksin w on (w.eid = e.id)
+	where e.manager = 1 ) = 1.0)
+	
+8.
+
+foreign key (eid) references Employees(eid) on delete cascade,
+
+9.
+
+11.
+create table R (
+        x       integer,
+        y       char(1),
+	primary key (x)
+);
+create table S (
+        y       char(1),
+        x       integer,
+	primary key (y)
+);
+
+alter table R add foreign key (y) references S(y);
+alter table Y add foreign key (x) references R(x);
+
+	
+14.
+
+alter table R add foreign key (y) references S(y) deferrable;
+alter table Y add foreign key (x) references R(x) deferrable;

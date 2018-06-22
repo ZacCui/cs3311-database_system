@@ -1,0 +1,30 @@
+2
+ACEG+ = ABCEFG
+BD+ = ABCDEFG
+3
+ACD
+EDC
+BCD
+b
+Yes, because the right hand sides of all dependencies (i.e. B, E, A) are parts of keys.
+No, because none of yhe lefy hand sides contains a key
+4
+i
+	BCNF
+	key: B
+	B+ = ABCD
+	fds : {C->D, C->A, B->C}
+	res : {ABCD}
+	fix B->C
+	res : {BC, ABD}
+	3rd
+	itself
+	
+key: BGH
+
+
+17
+
+
+
+

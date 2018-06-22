@@ -1,0 +1,17 @@
+# COMP3311 12s1 Exam Q12
+
+(a)
+
+answer = proj[eno,ename](sel[payRate > 20](Employees))
+
+(b)
+
+answer = proj[E.ename](Employees join[E.eno = D.eno] Department) 
+
+(c)
+
+temp = proj[ename,count(day)](groupby(eno)(Employees join TimeSheet))
+
+temp1 rename[1->name,2->days](temp)
+
+answer = proj[name](sel[days = 7](temp1))
